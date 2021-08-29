@@ -1,7 +1,7 @@
 const math = require('mathjs')
 const mathsteps = require('mathsteps')
 
-function eval(problem) {
+exports.eval = (problem) => {
   let result
 
   problem = check(problem)
@@ -30,7 +30,7 @@ function eval(problem) {
   return result
 }
 
-function simplify(problem) {
+exports.simplify = (problem) => {
   const steps = mathsteps.simplifyExpression(check(problem))
 
   if(!steps || steps.length < 1) {
@@ -48,7 +48,7 @@ function simplify(problem) {
   return result
 }
 
-function solve(equation) {
+exports.solve = (equation) => {
   const steps = mathsteps.solveEquation(check(equation))
 
   if(!steps || steps.length < 1) {
@@ -75,7 +75,3 @@ function lowerCase(str) {
 function check(expression) {
   return expression
 }
-
-exports.eval = eval
-exports.simplify = simplify
-exports.solve = solve

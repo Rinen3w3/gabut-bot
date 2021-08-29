@@ -1,17 +1,21 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const Discord = require('discord.js');
-const { stayOnline } = require('./server');
+const Discord = require('discord.js')
+const { identity } = require('./identity')
+const { stayOnline } = require('./server')
 
-const client = new Discord.Client();
+const client = new Discord.Client()
 
 client.on('ready', () => {
-	console.log(`Logged in as ${client.user.tag}!`);
-});
+  identity.client = client
+	console.log(`Logged in as ${client.user.tag}!`)
+  client.user.setStatus(identity.status)
+  
+  stayOnline()
+})
 
 client.on('message', msg => {
-	require('./commands/answer').answer(msg);
-});
+	require('./commands/answer').answer(msg)
+})
 
-stayOnline();
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN) 

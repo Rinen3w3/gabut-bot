@@ -1,10 +1,9 @@
 {
   "name": "Gabut-Bot",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.5.0-alpha",
+  "description": "Multifunctional Bot...",
   "main": "index.js",
   "dependencies": {
-    "@replit/database": "^2.0.1",
     "discord.js": "^12.5.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -15,11 +14,13 @@
   "devDependencies": {
     "nodemon": "^2.0.12"
   },
+  "engines": {
+    "node": ">= 12"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon --delay 2 index.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "FishyFishFish",
   "license": "MIT"
 }

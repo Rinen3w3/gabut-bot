@@ -1,99 +1,112 @@
 const fetch = require('node-fetch')
-const db = require('../utils/DB.js')
-const math = require('../utils/math.js')
-const help = require('../feedbacks/help.js').help
-const troll = require ('../feedbacks/troll.js').troll
+const db = require('../utils/DB')
+const math = require('../utils/math')
+const { identity } = require('../identity')
 
-async function answer(msg) {
-  // function to reply messages
-
-  const words = parseMessage(msg)
-  const authorName = `${msg.author.username}#${msg.author.discriminator}`
-
-  // Basic Commands
-  if(words[0] === "g!test" || words [1] == "G!TEST") {
-    msg.reply("shut up")
-    return
-  }
-  if(words[0] === "g!gabut" || words [1] == "G!GABUT") {
+const commands = {
+  // basic commands
+  'gabut': (msg, words) => {
     msg.reply("i know that feel bro")
-    return
-  }
-  if(words[0] === "g!help" || words [1] == "G!HELP") {
-    msg.channel.send(help)
-    return
-  }
-  if(words[0] === "g!troll" || words [1] == "G!TROLL") {
+  },
+  'troll': (msg, words) => {
+    const { troll } = require ('../feedbacks/troll')
     msg.channel.send(troll)
-    return
-  }
+  },
 
-  // Name and Identity
-  if(words[0] === 'g!who') {
-    if( words[1] && await db.get(getId(words[1])) )
-      return msg.reply(`he is ${await db.get(getId(words[1]))}`)
+  // utility
+  'help': (msg, words) => {
+    if(words[1] == 'math') {
+      // help math
+      const { helpMath } = require ('../feedbacks/helpmath')
+      msg.channel.send(helpMath)
+      return
+    }
+
+    const { help } = require('../feedbacks/help')
+    msg.channel.send(help)
+  },
+  'info': (msg, words) => {
+    const { info } = require ('../feedbacks/info')
+    msg.channel.send(info)
+  },
+
+  // Name and identity
+  'who': (msg, words) => {
+    const authorName = `${msg.author.username}#${msg.author.discriminator}`
+
+    if( words[1] && db.get(getId(words[1])) )
+      return msg.reply(`he is ${db.get(getId(words[1]))}`)
 
     if( words[1] && !db.get(getId(words[1])) )
       return  msg.reply('he is......')
 
-    if( await db.get(msg.author.id) )
-      return msg.reply(`you are ${await db.get(msg.author.id)}`)
+    if( db.get(msg.author.id) )
+      return msg.reply(`you are ${db.get(msg.author.id)}`)
 
     msg.reply(`you are ${authorName}`)
-    return
-  }
-  if(words[0] == 'g!forgetMe') {
-    msg.reply('Who are you!!')
-    await db.remove(msg.author.id)
-    return
-  }
-  if(words[0] == 'g!callMe') {
+  },
+  'callme': (msg, words) => {
     if(!words[1]) return msg.reply('What?')
-    await db.set(msg.author.id, words.slice(1).join(' '))
-    msg.reply(`Ok!, ${await db.get(msg.author.id)}`)
-    return
-  }
-  
-  // Simple Utility
-  if(words[0] == 'g!quote') {
+    db.set(msg.author.id, words.slice(1).join(' '))
+    msg.reply(`Ok!, ${db.get(msg.author.id)}`)
+  },
+  'forgetme': (msg, words) => {
+    msg.reply('Who are you!!')
+    db.remove(msg.author.id)
+  },
+
+  // Simple utilities
+  'quote': async (msg, words) => {
     let response = await fetch('https://api.quotable.io/random?maxLength=100')
     let {content, author} = await response.json()
     
     msg.channel.send(`${content} - **${author}**`)
-    return
-  }
+  },
 
-  // Math
-  if(words[0] == 'g!eval' && words[1]) {
+  // Maths
+  'eval': (msg, words) => {
     let result = math.eval(words.slice(1).join(' '))
 
     if(!result) return msg.reply('?')
     msg.reply(`the answer is **${result}**`)
-    return
-  }
-  if(words[0] == 'g!simplify' && words[1]) {
+  },
+  'simplify': (msg, words) => {
     let result = math.simplify(words.slice(1).join(' '))
 
     if(!result) return msg.reply('?')
     msg.reply(result)
-    return
-  }
-  if(words[0] == 'g!solve' && words[1]) {
+  },
+  'solve': (msg, words) => {
     let result = math.solve(words.slice(1).join(' '))
 
     if(!result) return msg.reply('?')
     msg.reply(result)
-    return
   }
 }
 
+exports.answer = async (msg) => {
+  // function to reply messages
+  const words = parseMessage(msg)
+
+  if(!words[0].startsWith(
+    identity.prefix
+  )) return
+
+  const action = commands[words[0].replace(identity.prefix, '')]
+  if(action) {
+    await action(msg, words)
+  } else {
+    // default action
+    msg.reply("shut up!")
+  }
+}
+
+
+// helper functions
 function parseMessage(msg) {
-  return msg.content.split(' ')
+  return msg.content.toLowerCase().split(' ')
 }
 
 function getId(_id) {
-  return _id
-    .replace(/<@!(.*)>/, '$1')
+  return _id.replace(/<@!?(.*)>/, '$1')
 }
-
-exports.answer = answer

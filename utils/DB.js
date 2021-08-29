@@ -1,21 +1,25 @@
-const Database = require("@replit/database")
+const fs = require('fs')
+const path = require('path')
 
-const db = new Database()
+const db = require('../names.json')
 
-async function set(key, value) {
-  return await db.set(key, value)
+exports.set = (key, value) => {
+  db[key] = value
+  fs.writeFileSync(
+    path.join(__dirname, '../names.json'),
+    JSON.stringify(db)
+  )
+  return db[key]
 }
-async function get(key) {
-  return await db.get(key)
+exports.get = (key) => {
+  return db[key]
 }
-async function remove(key) {
-  if(!await get(key)) return
-  return await db.delete(key)
-}
-async function list(prefix) {
-  return await db.list(prefix)
-}
-
-module.exports = {
-  set, get, remove, list
+exports.remove = (key) => {
+  if(!db[key]) return
+  delete db[key]
+  fs.writeFileSync(
+    path.join(__dirname, '../names.json'),
+    JSON.stringify(db)
+  )
+  return true
 }

@@ -9,7 +9,7 @@ exports.info = new MessageEmbed ()
     {
      name: 'Version:',
      value: `v${identity.package.version}`,
-     inline:true
+     inline: true
     },
     {
       name: 'License:',
@@ -22,17 +22,12 @@ exports.info = new MessageEmbed ()
       inline: true
     },
     {
-      name: 'Source code:',
-      value: '**[Click here!](https://github.com/kangae/Matematika-Gabut)**',
-      inline: true
-    },
-    {
       name: 'Project Leader:',
       value: 'Kangae#7035'
     },
     {
       name: 'Developer:',
-      value: 'KucingKode#9594'
+      value: 'Kangae#7035, KucingKode#9594'
     },
     {
       name: 'Contributor:',

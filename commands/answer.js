@@ -25,6 +25,17 @@ const commands = {
     const { help } = require('../feedbacks/help')
     msg.channel.send(help)
   },
+  'help': (msg, words) => {
+    if(words[1] == 'fun') {
+      // help fun
+      const { helpFun } = require ('../feedbacks/helpfun')
+      msg.channel.send(helpFun)
+      return
+    }
+
+    const { help } = require('../feedbacks/help')
+    msg.channel.send(help)
+  },
   'info': (msg, words) => {
     const { info } = require ('../feedbacks/info')
     msg.channel.send(info)
@@ -81,7 +92,13 @@ const commands = {
 
     if(!result) return msg.reply('?')
     msg.reply(result)
-  }
+  },
+  'latex': (msg, words) => {
+    if(!words[1]) return msg.reply('?')
+
+    const equation = words.slice(1).join(' ')
+    msg.channel.send(math.latex(equation))
+  },
 }
 
 exports.answer = async (msg) => {

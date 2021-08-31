@@ -1,5 +1,7 @@
 const math = require('mathjs')
 const mathsteps = require('mathsteps')
+const { MessageEmbed } = require('discord.js');
+
 
 exports.eval = (problem) => {
   let result
@@ -64,6 +66,13 @@ exports.solve = (equation) => {
   }, '\n')
 
   return result
+}
+
+exports.latex = (equation) => {
+  return new MessageEmbed()
+    .setColor('#48B5DF')
+    .setDescription(`latex: **${equation}**`)
+    .setImage(`http://www.sciweavers.org/tex2img.php?eq=${encodeURIComponent(equation)}&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=`)
 }
 
 function lowerCase(str) {

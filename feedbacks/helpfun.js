@@ -8,11 +8,11 @@ exports.helpFun = new MessageEmbed ()
   .addFields(
     {
       name: 'gabut',
-      value: 'gabut - ik that feel bro.'
+      value: '`gabut` - ik that feel bro.'
     },
     {
       name: 'troll',
-      value: 'troll - we do a large amount of trolling'
+      value: '`troll` - we do a large amount of trolling.'
     },
     {
       name: 'quote',

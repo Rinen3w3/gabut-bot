@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js"
+    "dev": "nodemon --delay 1 index.js"
   },
   "author": "FishyFishFish",
   "license": "MIT"

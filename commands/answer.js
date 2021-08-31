@@ -32,6 +32,20 @@ const commands = {
       msg.channel.send(helpFun)
       return
     }
+    
+    if(words[1] == 'math') {
+      // help math
+      const { helpMath } = require ('../feedbacks/helpmath')
+      msg.channel.send(helpMath)
+      return
+    }
+
+    if(words[1] == 'utility') {
+      // help utility
+      const { helpUtility } = require ('../feedbacks/helputility')
+      msg.channel.send(helpUtility)
+      return
+    }
 
     const { help } = require('../feedbacks/help')
     msg.channel.send(help)

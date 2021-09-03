@@ -12,6 +12,10 @@ const commands = {
     const { troll } = require ('../feedbacks/troll')
     msg.channel.send(troll)
   },
+  'jbb': (msg, words) => {
+    const { jokes } = require('../feedbacks/jokes')
+    msg.channel.send(jokes())
+  },
 
   // utility
   'help': (msg, words) => {

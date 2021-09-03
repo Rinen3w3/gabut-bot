@@ -19,15 +19,19 @@ exports.helpFun = new MessageEmbed ()
       value: '`quote` - Get a random quote from quotable.'
     },
     {
+      name: 'jbb',
+      value: '`jbb` - dad jokes funni.'
+    },
+    {
       name: 'who',
       value: '`who [user]` - Show the users callMe nickname.'
     },
     {
-      name: 'callMe',
+      name: 'callme',
       value: '`callMe [nickname]` - Creates a nickname when pinged with `who`.'
     },
     {
-      name: 'forgetMe',
+      name: 'forgetme',
       value: '`forgetMe` - Removes the current callMe nickname.'
     }
   )

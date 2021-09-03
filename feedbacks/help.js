@@ -9,7 +9,7 @@ exports.help = new MessageEmbed()
 	.addFields(
     {
       name: 'Fun Commands',
-      value: '`gabut`, `troll`, `quote`, `who`, `callMe`, `forgetMe`'
+      value: '`gabut`, `troll`, `quote`, `jbb`, `who`, `callme`, `forgetme`'
     },
     {
       name: 'Math Commands',

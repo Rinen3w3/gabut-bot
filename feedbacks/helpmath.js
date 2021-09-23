@@ -8,7 +8,7 @@ exports.helpMath = new MessageEmbed ()
   .addFields(
     { 
       name: 'eval', 
-      value: '`eval [equation]` - Works on most simple equations. You can also check this [link](https://mathjs.org/docs/reference/functions.html) for extra help.'
+      value: "`eval [equation]` - Works on most simple equations. You can also check this [link](https://mathjs.org/docs/reference/functions.html) for extra help. Also don't write `math.` in an equation."
     },
     { 
       name: 'simplify', 

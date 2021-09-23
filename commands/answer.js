@@ -86,6 +86,11 @@ const commands = {
 
   // Simple utilities
   'quote': async (msg, words) => {
+    if(words[1] == 'sw') {
+      msg.channel.send(require('starwars')())
+      return
+    }
+
     let response = await fetch('https://api.quotable.io/random?maxLength=100')
     let {content, author} = await response.json()
     

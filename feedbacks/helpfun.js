@@ -16,11 +16,11 @@ exports.helpFun = new MessageEmbed ()
     },
     {
       name: 'quote',
-      value: '`quote` - Get a random quote from quotable.'
+      value: '`quote [type]` - Get a random quote from quotable. Add `sw` for Star Wars quotes.'
     },
     {
       name: 'jbb',
-      value: '`jbb` - dad jokes funni.'
+      value: '`jbb` - :laughter:'
     },
     {
       name: 'who',

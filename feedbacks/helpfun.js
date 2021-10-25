@@ -21,17 +21,5 @@ exports.helpFun = new MessageEmbed ()
     {
       name: 'jbb',
       value: '`jbb` - :laughter:'
-    },
-    {
-      name: 'who',
-      value: '`who [user]` - Show the users callMe nickname.'
-    },
-    {
-      name: 'callme',
-      value: '`callMe [nickname]` - Creates a nickname when pinged with `who`.'
-    },
-    {
-      name: 'forgetme',
-      value: '`forgetMe` - Removes the current callMe nickname.'
     }
   )

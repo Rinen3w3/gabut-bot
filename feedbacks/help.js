@@ -9,7 +9,7 @@ exports.help = new MessageEmbed()
 	.addFields(
     {
       name: 'Fun Commands',
-      value: '`gabut`, `troll`, `quote`, `jbb`, `who`, `callme`, `forgetme`'
+      value: '`gabut`, `troll`, `quote`, `jbb`'
     },
     {
       name: 'Math Commands',
@@ -20,4 +20,3 @@ exports.help = new MessageEmbed()
       value: '`info`, `help`'
     },
 	)
-	.setFooter('More commands in the future!', 'https://cdn.discordapp.com/attachments/850362827255709746/890431887959547964/PG_logo.png')

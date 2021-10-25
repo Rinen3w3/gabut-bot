@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const db = require('../utils/DB')
 const math = require('../utils/math')
 const { identity } = require('../identity')
 
@@ -57,31 +56,6 @@ const commands = {
   'info': (msg, words) => {
     const { info } = require ('../feedbacks/info')
     msg.channel.send(info)
-  },
-
-  // Name and identity
-  'who': (msg, words) => {
-    const authorName = `${msg.author.username}#${msg.author.discriminator}`
-
-    if( words[1] && db.get(getId(words[1])) )
-      return msg.reply(`he is ${db.get(getId(words[1]))}`)
-
-    if( words[1] && !db.get(getId(words[1])) )
-      return  msg.reply('he is......')
-
-    if( db.get(msg.author.id) )
-      return msg.reply(`you are ${db.get(msg.author.id)}`)
-
-    msg.reply(`you are ${authorName}`)
-  },
-  'callme': (msg, words) => {
-    if(!words[1]) return msg.reply('What?')
-    db.set(msg.author.id, words.slice(1).join(' '))
-    msg.reply(`Ok!, ${db.get(msg.author.id)}`)
-  },
-  'forgetme': (msg, words) => {
-    msg.reply('Who are you!!')
-    db.remove(msg.author.id)
   },
 
   // Simple utilities

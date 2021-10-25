@@ -23,14 +23,14 @@ exports.info = new MessageEmbed ()
     },
     {
       name: 'Project Leader:',
-      value: 'Kangae#7035'
+      value: 'draken#7035'
     },
     {
       name: 'Developer:',
-      value: 'Kangae#7035, KucingKode#9594'
+      value: 'KucingKode#9594'
     },
     {
       name: 'Contributor:',
-      value: 'Bcuzwhynot#4663, Fayyaz#4548, Rajendrarp#2224'
+      value: 'Bcuzwhynot#4663'
     }
   )

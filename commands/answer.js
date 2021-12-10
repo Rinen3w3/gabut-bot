@@ -18,7 +18,7 @@ const commands = {
   'testembed': (msg, words) => {
     const { testembed } = require ('../feedbacks/testembed')
     msg.channel.send(testembed)
-  }
+  },
 
   // utility
   'help': (msg, words) => {

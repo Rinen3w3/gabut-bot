@@ -13,8 +13,12 @@ const commands = {
   },
   'jbb': (msg, words) => {
     const { jokes } = require('../feedbacks/jokes')
-    msg.channel.send(jokes())
+    msg.channel.send(jokes)
   },
+  'testembed': (msg, words) => {
+    const { testembed } = require ('../feedbacks/testembed')
+    msg.channel.send(testembed)
+  }
 
   // utility
   'help': (msg, words) => {

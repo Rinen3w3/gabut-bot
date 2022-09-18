@@ -4,9 +4,12 @@
 Made With 💖 For Pelajar Gabut
 
 ## Made By ...
-draken#7035, KucingKode#9594, Bcuzwhynot#4663
+Rinen#7035, KucingKode#9594, Bcuzwhynot#4663
 
 ## License
 MIT
 ___
 Super POG bot
+
+## Info
+This bot project is ended. May be updated in the future, may also be abandoned forever. If you have any idea, please tell us.

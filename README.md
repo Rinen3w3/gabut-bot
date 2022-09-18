@@ -12,4 +12,4 @@ ___
 Super POG bot
 
 ## Info
-This bot project is ended. May be updated in the future, may also be abandoned forever. If you have any idea, please tell us.
+This bot project is ended. May be updated in the future, may also be abandoned forever. If you have any idea, please tell us. There will be a replacement of this bot, but it is unsure.
